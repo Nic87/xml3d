@@ -1,1 +1,1 @@
-Please create your own development branch (git checkout --orphan MYNAME).
+Please create your own development branch (git checkout --orphan MYNAME; git rm -rf .).
