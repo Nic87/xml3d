@@ -1,8 +1,9 @@
 window.onload = function(){
+	  
 	  (function(){  
 	   var VOZ = {
 			elems:[],//Array to save all the elements found by the functions getById, getByC
-			selectedElem:null,
+			selectedElems:[],
 			initScene:function() {
 				var scene = document.getElementById("MyXml3d");
 				if(scene && scene.setOptionValue) {
@@ -63,38 +64,55 @@ window.onload = function(){
 			moveMesh:function(id){
 				 var transform = document.getElementById(id);
 				 transform.translation.x += 0.1;
+				 $$.resetXml3D();
 				 return this;
 			   },
 			
-			copyObjects:function(id){
+			createBox:function(){
 				var box = document.createElement('group');
-				box.setAttribute('style','-moz-transform: url(#ex6_1_boxXfm2); transform: url(#ex6_1_boxXfm2);');
-				var box2 = document.createElement('group');
-				box2.setAttribute('style','shader: url(#ex4_2_texShader);');
+				box.setAttribute('transform','#posTransformbox3');
 				var newmesh = document.createElement('mesh');
 				newmesh.setAttribute('type','triangles');
 				newmesh.setAttribute('src','#squareData');
-				box2.appendChild(newmesh);
-				box.appendChild(box2);
-				document.getElementById(id).appendChild(box);
+				box.appendChild(newmesh);
+				box.setAttribute('id','box3');
+				document.getElementById('MyXml3d').appendChild(box);
+				$$.resetXml3D();
+				alert('box created: '+document.getElementById('box3').getAttribute('transform'));
 				return this;
 				},
+			contains:function(sarray, ele){
+				//alert('contains function');
+				for(var i = 0;i<sarray.length;i++){
+					if(sarray[i]===ele)return true;
+				}
+				return false;
+			},
+			indexOfEle:function(sarray,ele){
+				for(var i = 0;i<sarray.length;i++){
+					if(sarray[i]===ele){
+					alert('index: '+i);
+					return i;
+					}
+				}
+				alert('index: -1');
+				return -1;
+			},
 			selectElement:function(){
 				for(var i = 0;i<this.elems.length;i++){
 					var element = this.elems[i];
-					if(this.elems[i]=== this.selectedElem){
-						var redShader = '#redShader'
+					if($$.contains(this.selectedElems,element)){
 						var elemAttr = element.getAttribute('oldShader');
 						element.setAttribute('shader',elemAttr);
 						element.removeAttribute('oldShader');
-						this.selectedElem = null;
+						this.selectedElems.splice($$.indexOfEle(this.selectedElems,element),1);
 						$$.resetXml3D();
-					} else if(this.selectedElem === null){
+					} else {
 						var redShader = '#redShader'
 						var elemAttr = element.getAttribute('shader');
 						element.setAttribute('shader',redShader);
 						element.setAttribute('oldShader',elemAttr);
-						this.selectedElem = element;
+						this.selectedElems.push(element);
 						$$.resetXml3D();
 					}
 				}
@@ -130,29 +148,35 @@ window.onload = function(){
 				}
 			},
 			moveSelectedObject:function(keyNumber){
-				$$.testPositionTransformer();
-				var transformer = document.getElementById('posTransformer'+this.selectedElem.getAttribute('id'));
-				alert('almost working:'+transformer.getAttribute('translation')+'transform:'+this.selectedElem.getAttribute('transform'));
-				switch(parseInt(keyNumber)){
-					case 37:{
-						transformer.translation.x -= 0.1;
-						break;
+				//$$.testPositionTransformer();
+				for(var i = 0;i<this.selectedElems.length;i++){
+					var element = this.selectedElems[i];
+					var transformerIdRaw = element.getAttribute('transform').toString();
+					var transformerId = transformerIdRaw.substring(1,transformerIdRaw.length);
+					var transformer = document.getElementById(transformerId);
+					//alert('almost working:'+transformer.getAttribute('translation')+'transform:'+this.selectedElem.getAttribute('transform'));
+					//alert(transformerId + ' Using');
+					switch(parseInt(keyNumber)){
+						case 37:{
+							transformer.translation.x -= 0.1;
+							break;
+						}
+						case 38:{
+							transformer.translation.y += 0.1;
+							break;
+						}
+						case 39:{
+							transformer.translation.x += 0.1;
+							break;
+						}
+						case 40:{
+							transformer.translation.y -= 0.1;
+							break;
+						}
 					}
-					case 38:{
-						transformer.translation.y += 0.1;
-						break;
-					}
-					case 39:{
-						transformer.translation.x += 0.1;
-						break;
-					}
-					case 40:{
-						transformer.translation.y -= 0.1;
-						break;
-					}
+					
 				}
 				$$.resetXml3D();
-				
 			},
 			createTransformer:function(name){
 				alert('');
@@ -190,7 +214,7 @@ window.onload = function(){
 					if(transform.toString()===transformerName){
 						
 					} else{
-						$$.copyTransformer('posTransformer'+elemId,transform);
+						$$.createTransformer('posTransformer'+elemId);
 						this.selectedElem.setAttribute('transform',transformerName);
 						$$.resetXml3D();
 						alert(''+this.selectedElem.getAttribute('transform'));
@@ -211,47 +235,11 @@ window.onload = function(){
             //Look for the elements with the Id example2,example3, example4 and add the class 'boxesOnChange'
 			$$.getById('box2').selectElement();
         });
-		$$.getById('btnMove').on('click',function(){
-            //Look for the elements with the Id example2,example3, example4 and add the class 'boxesOnChange'
-			$$.getById('box1').selectElement();
-        });
-		$$.getById('content').on('click',function(){
-            //Add the class 'blackBorder' into this element
-            $$.getById('content').addClass('blackBorder')
-        });
-    
-    //Look for the element with the Id myButton and attach an onclick element
-    $$.getById('myButton').on('click',function(){
-            //Add the class 'blackBorder' into this element
-            $$.getById('content').addClass('redBorder');
-        });
-    
-    //Look for the element with the Id myButton and attach an onclick element
-    $$.getById('myButtonToggle').on('click',function(){
-            //Show and Hide the element depending of its status
-            $$.getById('content').toggleHide();
-        });
-    
-    //Look for the element with the Id myButtonBox and attach an onclick element
-    $$.getById('myButtonBox').on('click',function(){
-            //Look for the elements with the Id example2,example3, example4 and add the class 'boxesOnChange'
-            $$.getById('example2','example3','example4').addClass('boxesOnChange');
-        });
-    
-    //Look for the element with the Id myButtonBox and attach an onclick element
-    $$.getById('myButtonToggleBox').on('click',function(){
-            //Show and Hide the elements depending of their status
-            $$.getById('example2','example3','example4').toggleHide();
-        });
-    
-    //Look for the element with the Id myButtonBox and attach an onclick element
-    $$.getById('btnAdd').on('click', function(){
-            //Append new text to content everytime the event is fired
-            $$.getById('content').appendText('Text added by Javascript :) ');
-        });
+		$$.selectedElems = [];
 	$$.initScene();
 	if(navigator.appName!= "Mozilla"){document.onkeyup=$$.capturekey}
 	else{document.addEventListener("keypress",$$.capturekey,true);}
 
-}     
+};
+     
 		
