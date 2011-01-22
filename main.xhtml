@@ -10,8 +10,8 @@
         <script type="text/javascript" src="lib/toolbar.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
     </head>
-    <body onload="javascript:X3D.tb.init();">
-        <div id="toolbar">
+    <body onload="X3D.log.init($('#output')); X3D.tb.init(); X3D.main.init();">
+        <div class="toolbar">
             <ul id="tools">
                 <li id="logo">XML3D</li>
                 <li><button type="button" onclick="tb.addCube();"><img src="" alt="foo"/></button></li>
@@ -74,10 +74,11 @@
             </div> 
         </div>
         <div id="expand">
-            <img id="collexp" src="media/collexp.png"
-            alt="Collapse / Expand debugging information" />
+            <img id="collexp" src="media/exp.png" onclick="$('#debug').slideToggle('fast', function() { $('#collexp').attr('src','media/coll.png').css('bottom', '201px;')})"
+                alt="Collapse / Expand debugging information" />
         </div>
-        <div style="" id="debug">
+        <div id="debug">
+            <h3 class="toolbar" style="border-top: 1px solid #ccc; line-height: 25px;">Debugging Output</h3>
             <textarea id="output"></textarea>
         </div>
     </body>
