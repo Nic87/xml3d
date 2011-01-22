@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>XML3D UI</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="media/style.css">
+        <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="lib/toolbar.js"></script>
+        <script type="text/javascript" src="lib/comm.js"></script>
+    </head>
+
+    <body onload="javascript:x3w.init('xml3d');">
+        <div id="toolbar">
+            <ul id="tools">
+                <li id="logo">XML3D</li>
+                <li><button type="button" onclick="tb.addCube();"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="bar"/></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li id="status"><div id="offline">&nbsp;<div id="offline">&nbsp</div></li>
+            </ul>
+        </div>
+        <div id="main">
+            <xml3d id="xml3d"></xml3d>
+        </div>
+        <div id="expand">
+            <img id="collexp" src="media/collexp.png"
+                alt="Collapse / Expand debugging information" />
+        </div>
+        <div style="" id="debug">
+            <textarea id="output"><textarea>
+        </div>
+    </body>
+</html>
