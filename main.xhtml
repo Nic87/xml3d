@@ -9,7 +9,7 @@
         <script type="text/javascript" src="lib/toolbar.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
 </head>
-<body onload="javascript:log.init(); init();">
+<body onload="javascript:log.init();javascript:X3D.main.init();">
         <div id="toolbar">
             <ul id="tools">
                 <li id="logo">XML3D</li>
@@ -69,7 +69,7 @@
    function moveMesh2(id){
      var transform = document.getElementById(id);
      transform.translation.x += 0.1;
-	 $$.resetXml3D();
+	 X3D.wiki.resetXml3D();
    }
  </script>
 <div id="xml3d_scripts"> 
