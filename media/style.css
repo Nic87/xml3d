@@ -95,7 +95,7 @@ border: 3px solid #ff0000;
 }
 
 #debug #output {
-width:100%;
+width:99%;
 height: 200px;
 position:absolute;
 bottom: 0;
