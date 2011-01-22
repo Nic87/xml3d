@@ -95,6 +95,12 @@ width:100%;
 border: 3px solid #ff0000;
 }
 
+#debugheader {
+border-top: 1px solid #ccc;
+height: 25px;
+line-height: 25px;
+}
+
 #debug #output {
 height: 160px;
 position:absolute;
