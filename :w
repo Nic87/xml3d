@@ -3,18 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
 <head>
-	<style type="text/css">
-        .blackBorder{ border:1px solid black; background:black; color:white; height:20px;}
-        .redBorder{ border:4px solid red;}
-        .examples{ width:200px; border:2px dashed gray; background-color:blue; height:70px; float:left; margin:20px;}
-        .boxesOnChange{ background-color:green;}   
-    </style>
-	<script src="xml3dwiki.js" type="text/javascript" >
-	</script>
+        <link rel="stylesheet" type="text/css" media="screen" href="media/style.css">
+        <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="lib/toolbar.js"></script>
+        <script type="text/javascript" src="lib/comm.js"></script>
+        <script src="lib/xml3dwiki.js" type="text/javascript" ></script>
 </head>
-<div id="start"></div>
-<xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 500px; height: 400px; border: 1px solid gray" activeView="#defaultView"
-  physics:gravity="0 -10 0">
+<body onload="javascript:x3w.init('MyXml3d');">
+        <div id="toolbar">
+            <ul id="tools">
+                <li id="logo">XML3D</li>
+                <li><button type="button" onclick="tb.addCube();"><img src="" alt="foo"/></button></li>
+                <li><button type="button" onclick="$$.createBox();"><img src="" alt="bar"/></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li><button type="button"><img src="" alt="foo"/></button></li>
+                <li id="status"><div id="offline">&nbsp;<div id="offline">&nbsp</div></li>
+            </ul>
+        </div>
+        <div id="main">
+<xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 500px; height: 400px; border: 1px solid gray" activeView="#defaultView" physics:gravity="0 -10 0">
   <defs id="3dDefs">
   <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" />
   <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
@@ -28,13 +39,6 @@
       <float name="ambientIntensity">1.0</float>
     </shader>
    <transform id="ex3_1_boxXfm" scale="1.5 0.5 1.0"  rotation="0 0 1 0.3" translation="-0.5 0 0"/>
-   <shader id="ex4_2_texShader" script="urn:xml3d:shader:phong">
-      <float3 name="diffuseColor">1.0 1.0 1.0</float3>
-      <float name="ambientIntensity">1.0</float>
-      <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
-        <img src="Winter.jpg"/>
-      </texture>
-    </shader>
 	<lightshader id="ex5_1_lightShader" script="urn:xml3d:lightshader:point">
       <float3 name="intensity">0.9 0.6 0.3</float3>
       <float3 name="attenuation">0 0 1</float3>
@@ -58,10 +62,9 @@
 		<mesh type="triangles" src="#squareData">
 		</mesh>
 	  </group>
-	  
-
   
-</xml3d><br />
+      </xml3d>
+  <br />
  <script type="text/javascript">
    function moveMesh2(id){
      var transform = document.getElementById(id);
@@ -72,7 +75,14 @@
 <div id="xml3d_scripts"> 
    	<script type="text/javascript" src="http://graphics.cs.uni-sb.de/fileadmin/cguds/projects/xml3d/script/xml3d.js"></script>
 </div> 
- <button onclick="$$.moveMesh('ex6_1_boxXfm1')">Move Mesh</button><br/>
- <button onclick="$$.createBox()">Create Box</button>
- 
+ <button onclick="">Create Box</button>
+        </div>
+        <div id="expand">
+            <img id="collexp" src="media/collexp.png"
+                alt="Collapse / Expand debugging information" />
+        </div>
+        <div style="" id="debug">
+            <textarea id="output"><textarea>
+        </div>
+    </body>
 </html>

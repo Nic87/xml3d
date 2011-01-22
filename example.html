@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>WebSockets</title>
+    </head>
+
+    <body>
+        <script language="javascript">
+            var wsuri = "ws://localhost:8080/";
+            var output, log;
+
+            function init() {
+                output = document.getElementById("output");
+                log = new Log(output);
+                testWebSocket();
+            }
+
+            function testWebSocket() {
+                websocket = new WebSocket(wsuri);
+                websocket.onopen = function (evt) { onOpen(event); };
+                websocket.onclose = function (evt) { onClose(event); };
+                websocket.onmessage = function (evt) { onMessage(event); }
+                websocket.onerror = function (evt) { onError(event); };
+            }
+
+            function onOpen(event) {
+                log.info("connection created");
+                doSend("hello world");
+            }
+
+            function onClose(event) {
+                log.info("connection closed");
+            }
+
+            function onMessage(event) {
+                log.info("received msg "+event.data);
+            }
+
+            function onError(event) {
+                log.error(event.data);
+            }
+
+            function doSend(data) {
+                log.info("sent "+data);
+                websocket.send(data);
+            }
+
+            var Log = function (element) {
+                this.el = element;
+                var that = this;
+
+                this.all = function(type, msg) {
+                    msg = (new Date()).toLocaleString()+" "+type+": "+msg+"\n";
+                    var out = document.createTextNode(msg);
+                    that.el.appendChild(out);
+                    that.el.scrollTop = that.el.scrollHeight;
+                }
+
+                this.info = function (msg) {
+                    that.all("INFO", msg);
+                }
+                
+                this.warn = function (msg) {
+                    that.all("WARNING", msg);
+                }
+
+                this.error = function (msg) {
+                    that.all("ERROR", msg);
+                }
+            }
+        </script>
+        <h3>Control Area</h3>
+        <input type="button" onclick="javascript:init();" value="Initialize" />
+        <h3>Logging Output</h3>
+        <textarea style="width: 100%; height: 20%;" id="output"></textarea>
+    </body>
+</html>
+
