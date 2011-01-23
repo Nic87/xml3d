@@ -97,6 +97,7 @@ border: 3px solid #ff0000;
 
 #debugheader {
 border-top: 1px solid #ccc;
+padding-left: 10px;
 height: 25px;
 line-height: 25px;
 }

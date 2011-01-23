@@ -4,23 +4,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
-        <script type="text/javascript" src="lib/jquery-1.4.4.min.js">
-            $(document).ready(function() {
-                X3D.log.init($('#output'));
-                X3D.tb.init();
-                X3D.main.init();
-
-                $('#collexp').click(function(evt) { $(this).slideToggle('fast', function() {
-                    $('#collexp').attr('src','media/coll.png').css('bottom', '201px;')
-                });
-
-                X3D.log.get("foo").info("warn");
-            });
-        </script>
+        <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.cookie.js"></script>
         <script type="text/javascript" src="lib/xml3dwiki.js"></script>
         <script type="text/javascript" src="lib/util.js"></script>
         <script type="text/javascript" src="lib/toolbar.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            X3D.log.init($('#output').get(0));
+            X3D.tb.init();
+            X3D.ws.init();
+            X3D.main.init();
+
+            $('#collexp').click(function(evt) {
+                $('#debug').slideToggle('fast', function() {
+                    $.cookie("debug", $('#debug').is(':visible'));
+                })
+            });
+
+            // activate last known debug setting
+            if ($.cookie('debug')) $('#collexp').click();
+        });
+        </script>
     </head>
     <body>
         <div class="toolbar">
@@ -75,11 +81,11 @@
             </xml3d>
             <br />
             <script type="text/javascript">
-                function moveMesh2(id){
-                    var transform = document.getElementById(id);
-                    transform.translation.x += 0.1;
-                    $$.resetXml3D();
-                }
+            function moveMesh2(id){
+                var transform = document.getElementById(id);
+                transform.translation.x += 0.1;
+                $$.resetXml3D();
+            }
             </script>
             <div id="xml3d_scripts"> 
                 <script type="text/javascript" src="lib/xml3d.js"></script>
@@ -90,6 +96,7 @@
         </div>
         <div id="debug">
             <h3 class="toolbar" id="debugheader">Debugging Output</h3>
+            <div style="float: right;">close</div>
             <textarea id="output" readonly="readonly"></textarea>
         </div>
     </body>
