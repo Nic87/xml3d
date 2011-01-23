@@ -1,3 +1,7 @@
+html,body {
+height: 100%
+}
+
 body {
 margin:0;
 padding:0;
@@ -75,6 +79,18 @@ cursor:pointer;
 z-index: 50;
 }
 
+#main {
+min-height: 100%;
+height: auto !important;
+height: 100%; 
+vertical-align:bottom;
+}
+
+#MyXml3d {
+width: 100%;
+z-index: 1;
+}
+
 #debug {
 margin:0;
 padding:0;
@@ -83,11 +99,6 @@ height:202px;
 position:absolute;
 display:none;
 bottom: 0;
-}
-
-#xml3d {
-width:100%;
-border: 3px solid #ff0000;
 }
 
 #debugheader {

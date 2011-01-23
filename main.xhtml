@@ -19,6 +19,9 @@
             X3D.ws.init();
             X3D.main.init();
 
+            // ugly workaround
+            $('#MyXml3d').css('height', window.innerHeight-30);
+
             $('#collexp').click(function(evt) {
                 $('#debug').slideToggle('fast', function() {
                     $.cookie("debug", $('#debug').is(':visible'));
@@ -38,22 +41,22 @@
         </script>
     </head>
     <body>
-        <div class="toolbar">
-            <ul id="tools">
-                <li id="logo">XML3D</li>
-                <li><button type="button" onclick="tb.addCube();"><img src="" alt="foo"/></button></li>
-                <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="" alt="bar"/></button></li>
-                <li><button type="button"><img src="" alt="foo"/></button></li>
-                <li><button type="button"><img src="" alt="foo"/></button></li>
-                <li><button type="button"><img src="" alt="foo"/></button></li>
-                <li><button type="button"><img src="" alt="foo"/></button></li>
-                <li><button type="button"><img src="" alt="foo"/></button></li>
-                <li><button type="button"><img src="" alt="foo"/></button></li>
-                <li id="status"><div>&nbsp;</div></li>
-            </ul>
-        </div>
         <div id="main">
-            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 -10 0">
+            <div class="toolbar">
+                <ul id="tools">
+                    <li id="logo">XML3D</li>
+                    <li><button type="button" onclick="tb.addCube();"><img src="" alt="foo"/></button></li>
+                    <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="" alt="bar"/></button></li>
+                    <li><button type="button"><img src="" alt="foo"/></button></li>
+                    <li><button type="button"><img src="" alt="foo"/></button></li>
+                    <li><button type="button"><img src="" alt="foo"/></button></li>
+                    <li><button type="button"><img src="" alt="foo"/></button></li>
+                    <li><button type="button"><img src="" alt="foo"/></button></li>
+                    <li><button type="button"><img src="" alt="foo"/></button></li>
+                    <li id="status"><div>&nbsp;</div></li>
+                </ul>
+            </div>
+            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" activeView="#defaultView" physics:gravity="0 -10 0">
                 <defs id="3dDefs">
                     <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" />
                     <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
