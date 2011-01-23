@@ -33,8 +33,7 @@
             });
 
             // activate last known debug setting
-            if ($.cookie('debug')) {
-                alert("cookie "+$.cookie('debug'));
+            if ($.cookie('debug') == "true") {
                 $('#collexp').click();
             }
 
