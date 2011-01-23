@@ -7,7 +7,7 @@ ws.createServer(function (websocket) {
     sys.debug("connect: " + resource);
 
     // server closes connection after 10s, will also get "close" event
-    setTimeout(websocket.end, 10 * 1000); 
+    //setTimeout(websocket.end, 10 * 1000);
   }).addListener("data", function (data) { 
     // handle incoming data
     sys.debug(data);
