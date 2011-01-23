@@ -9,10 +9,12 @@
         <script type="text/javascript" src="lib/xml3dwiki.js"></script>
         <script type="text/javascript" src="lib/util.js"></script>
         <script type="text/javascript" src="lib/toolbar.js"></script>
+        <script type="text/javascript" src="lib/em.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
         <script type="text/javascript">
         $(document).ready(function() {
             X3D.log.init($('#output').get(0));
+            X3D.em.init($('#status div'));
             X3D.tb.init();
             X3D.ws.init();
             X3D.main.init();
@@ -25,6 +27,10 @@
 
             // activate last known debug setting
             if ($.cookie('debug')) $('#collexp').click();
+
+            $('#status div').click(function(evt) {
+                X3D.ws.reconnect();
+            });
         });
         </script>
     </head>
@@ -40,7 +46,7 @@
                 <li><button type="button"><img src="" alt="foo"/></button></li>
                 <li><button type="button"><img src="" alt="foo"/></button></li>
                 <li><button type="button"><img src="" alt="foo"/></button></li>
-                <li id="status"><div id="online">&nbsp;</div><div id="offline">&nbsp;</div></li>
+                <li id="status"><div>&nbsp;</div></li>
             </ul>
         </div>
         <div id="main">

@@ -62,15 +62,9 @@ height: 12px;
 margin-top: 5px;
 }
 
-.toolbar ul#tools li#status #online {
-display:none;
-background: -moz-radial-gradient(center 45deg, circle closest-corner, #00ff00 0%, #2F2727 100%);
-background: -webkit-gradient(radial, center center, 0, center center, 70, from(#00ff00), to(#2F2727));
-}
-
-.toolbar ul#tools li#status #offline {
-background: -moz-radial-gradient(center 45deg, circle closest-corner, #ff0000 0%, #2F2727 100%);
-background: -webkit-gradient(radial, center center, 0, center center, 70, from(#ff0000), to(#2F2727));
+.toolbar ul#tools li#status div {
+background-color: #ff0000;
+cursor:pointer;
 }
 
 #collexp {
