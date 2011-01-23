@@ -39,7 +39,7 @@
             <ul id="tools">
                 <li id="logo">XML3D</li>
                 <li><button type="button" onclick="tb.addCube();"><img src="" alt="foo"/></button></li>
-                <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="" alt="bar"/></button></li>
+                <li><button type="button" onclick="$$.createBox();"><img src="" alt="bar"/></button></li>
                 <li><button type="button"><img src="" alt="foo"/></button></li>
                 <li><button type="button"><img src="" alt="foo"/></button></li>
                 <li><button type="button"><img src="" alt="foo"/></button></li>
@@ -54,6 +54,7 @@
                 <defs id="3dDefs">
                     <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" />
                     <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
+                    <transform id="posTransformbox3" translation="3 0 0" />
                     <shader id="redShader" script="urn:xml3d:shader:phong">
                         <float3 name="diffuseColor">1.0 0.0 0.0</float3>
                         <float name="ambientIntensity">1.0</float>
