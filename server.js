@@ -18,5 +18,5 @@ ws.createServer(function (websocket) {
     // emitted when server or client closes connection
     sys.debug("close");
   });
-}).listen(8080);
+}).listen(1337);
 
