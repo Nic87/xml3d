@@ -4,13 +4,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
-        <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
-        <script src="lib/xml3dwiki.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="lib/jquery-1.4.4.min.js">
+            $(document).ready(function() {
+                X3D.log.init($('#output'));
+                X3D.tb.init();
+                X3D.main.init();
+
+                $('#collexp').click(function(evt) { $(this).slideToggle('fast', function() {
+                    $('#collexp').attr('src','media/coll.png').css('bottom', '201px;')
+                });
+
+                X3D.log.get("foo").info("warn");
+            });
+        </script>
+        <script type="text/javascript" src="lib/xml3dwiki.js"></script>
         <script type="text/javascript" src="lib/util.js"></script>
         <script type="text/javascript" src="lib/toolbar.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
     </head>
-    <body onload="X3D.log.init($('#output')); X3D.tb.init(); X3D.main.init();">
+    <body>
         <div class="toolbar">
             <ul id="tools">
                 <li id="logo">XML3D</li>
@@ -74,12 +86,11 @@
             </div> 
         </div>
         <div id="expand">
-            <img id="collexp" src="media/exp.png" onclick="$('#debug').slideToggle('fast', function() { $('#collexp').attr('src','media/coll.png').css('bottom', '201px;')})"
-                alt="Collapse / Expand debugging information" />
+            <img id="collexp" src="media/exp.png" alt="Collapse / Expand debugging information" />
         </div>
         <div id="debug">
             <h3 class="toolbar" id="debugheader">Debugging Output</h3>
-            <textarea id="output"></textarea>
+            <textarea id="output" readonly="readonly"></textarea>
         </div>
     </body>
 </html>
