@@ -33,7 +33,7 @@
             });
 
             // activate last known debug setting
-            if ($.cookie('debug') == true) $('#collexp').click();
+            if ($.cookie('debug')) $('#collexp').click();
 
             $('#status div').click(function(evt) {
                 X3D.ws.toggle();
