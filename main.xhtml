@@ -22,6 +22,9 @@
             $('#collexp').click(function(evt) {
                 $('#debug').slideToggle('fast', function() {
                     $.cookie("debug", $('#debug').is(':visible'));
+
+                    $('#collexp').attr('src', $('#debug').is(':visible')
+                        ? 'media/coll.png' : 'media/exp.png');
                 })
             });
 
@@ -90,13 +93,6 @@
                 </group>
             </xml3d>
             <br />
-            <script type="text/javascript">
-            function moveMesh2(id){
-                var transform = document.getElementById(id);
-                transform.translation.x += 0.1;
-                $$.resetXml3D();
-            }
-            </script>
             <div id="xml3d_scripts"> 
                 <script type="text/javascript" src="lib/xml3d.js"></script>
             </div> 
@@ -106,7 +102,6 @@
         </div>
         <div id="debug">
             <h3 class="toolbar" id="debugheader">Debugging Output</h3>
-            <div style="float: right;">close</div>
             <textarea id="output" readonly="readonly"></textarea>
         </div>
     </body>
