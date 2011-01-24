@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/ui-lightness/jquery-ui-1.8.9.custom.css" />
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
 		<script type="text/javascript" src="lib/jquery-ui-1.8.9.custom.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cookie.js"></script>
@@ -21,7 +22,7 @@
             X3D.main.init();
 
             // ugly workaround
-            $('#MyXml3d').css('height', window.innerHeight-33);
+            //$('#MyXml3d').css('height', window.innerHeight-33); // Funktioniert bei mir nicht
 
             $('#collexp').click(function(evt) {
                 $('#debug').slideToggle('fast', function() {
@@ -50,7 +51,7 @@
                     <li id="logo">XML3D</li>
                     <li><button type="button" onclick="tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="media/icon.png" alt="bar"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><button id="create-user" type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
@@ -59,13 +60,17 @@
                     <li id="status"><div>&nbsp;</div></li>
                 </ul>
             </div>
-            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" activeView="#defaultView" physics:gravity="0 -10 0">
+            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 -10 0"> <!-- Ohne style funktioniert es nicht-->
                 <defs id="3dDefs">
                     <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" />
                     <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
                     <transform id="posTransformbox3" translation="3 0 0" />
                     <shader id="redShader" script="urn:xml3d:shader:phong">
                         <float3 name="diffuseColor">1.0 0.0 0.0</float3>
+                        <float name="ambientIntensity">1.0</float>
+                    </shader>
+					<shader id="greenShader" script="urn:xml3d:shader:phong">
+                        <float3 name="diffuseColor">0.0 1.0 0.0</float3>
                         <float name="ambientIntensity">1.0</float>
                     </shader>
                     <shader id="blueShader" script="urn:xml3d:shader:phong">
@@ -110,5 +115,38 @@
             <h3 class="toolbar" id="debugheader">Debugging Output</h3>
             <textarea id="output" readonly="readonly"></textarea>
         </div>
+		<style>
+			body { font-size: 62.5%; }
+			label, input { display:block; }
+			input.text { margin-bottom:12px; width:95%; padding: .4em; }
+			fieldset { padding:0; border:0; margin-top:25px; }
+			h1 { font-size: 1.2em; margin: .6em 0; }
+			div#users-contain { width: 350px; margin: 20px 0; }
+			div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+			div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+			.ui-dialog .ui-state-error { padding: .3em; }
+			.validateTips { border: 1px solid transparent; padding: 0.3em; }
+		</style>
+		<style>
+			#feedback { font-size: 1.4em; }
+			#selectable .ui-selecting { background: #FECA40; }
+			#selectable .ui-selected { background: #F39814; color: white; }
+			#selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+			#selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+		</style>
+		<div class="demo">
+			<div id="dialog-form" title="Create new user">
+				<form>
+				<ol id="selectable">
+					<li class="ui-widget-content">Item 1</li>
+					<li class="ui-widget-content">Item 2</li>
+					<li class="ui-widget-content">Item 3</li>
+					<li class="ui-widget-content">Item 4</li>
+					<li class="ui-widget-content">Item 5</li>
+					<li class="ui-widget-content">Item 6</li>
+				</ol>
+				</form>
+			</div>
+		</div><!-- End demo -->
     </body>
 </html>
