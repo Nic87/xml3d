@@ -48,6 +48,7 @@ border: 0;
 -khtml-border-radius: 2px;
 border-radius: 2px;
 min-width:30px;
+cursor:pointer;
 }
 
 .toolbar ul#tools li#status {
