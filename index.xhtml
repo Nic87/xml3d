@@ -4,9 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
-		<link rel="stylesheet" type="text/css" media="screen" href="css/ui-lightness/jquery-ui-1.8.9.custom.css" />
+		<!--<link rel="stylesheet" type="text/css" media="screen" href="css/ui-lightness/jquery-ui-1.8.9.custom.css" /> -->
+		<script type="text/javascript" src="lib/modalbox.js">		</script>
+		<link rel="stylesheet" href="media/modaldbox.css" type="text/css" />
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
-		<script type="text/javascript" src="lib/jquery-ui-1.8.9.custom.min.js"></script>
+		<!--<script type="text/javascript" src="lib/jquery-ui-1.8.9.custom.min.js"></script> -->
         <script type="text/javascript" src="lib/jquery.cookie.js"></script>
         <script type="text/javascript" src="lib/xml3dwiki.js"></script>
         <script type="text/javascript" src="lib/util.js"></script>
@@ -20,6 +22,7 @@
             X3D.tb.init();
             X3D.ws.init();
             X3D.main.init();
+			X3D.dia.initmb();
 
             // ugly workaround
             //$('#MyXml3d').css('height', window.innerHeight-33); // Funktioniert bei mir nicht
@@ -51,9 +54,9 @@
                     <li id="logo">XML3D</li>
                     <li><button type="button" onclick="tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="media/icon.png" alt="bar"/></button></li>
-                    <li><button id="create-user" type="button"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button"><img onclick="X3D.dia.getDialog();" src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
@@ -116,7 +119,7 @@
             <h3 class="toolbar" id="debugheader">Debugging Output</h3>
             <textarea id="output" readonly="readonly"></textarea>
         </div>
-		<style>
+		<!--<style>
 			body { font-size: 62.5%; }
 			label, input { display:block; }
 			input.text { margin-bottom:12px; width:95%; padding: .4em; }
@@ -148,6 +151,10 @@
 				</ol>
 				</form>
 			</div>
-		</div><!-- End demo -->
+		</div>--><!-- End demo --> 
+		<div id="box" class="dialog">
+			<div style="text-align:center"><span id="txt">Press OK to continue.</span><br/>
+			<button onclick="X3D.dia.hm('box');X3D.dia.okSelected()">OK</button></div>
+		</div> 
     </body>
 </html>
