@@ -56,7 +56,7 @@
                     <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="media/icon.png" alt="bar"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img onclick="X3D.dia.getDialog();" src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button"><img onclick="X3D.tb.changeShaderDialog();" src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
@@ -153,8 +153,15 @@
 			</div>
 		</div>--><!-- End demo --> 
 		<div id="box" class="dialog">
-			<div style="text-align:center"><span id="txt">Press OK to continue.</span><br/>
-			<button onclick="X3D.dia.hm('box');X3D.dia.okSelected()">OK</button></div>
+			<div style="text-align:center">
+				<span id="txt">
+					
+				</span><br/>
+				<ol id="items">
+					<li>Example</li>
+				</ol>
+				<button onclick="X3D.dia.hm('box');X3D.dia.okSelected()">OK</button>
+			</div>
 		</div> 
     </body>
 </html>
