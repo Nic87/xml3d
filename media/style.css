@@ -120,6 +120,7 @@ width: 99%;
 background-color:#eee; 
 padding:8px; 
 border:2px outset #666;
+overflow:scroll;
 }
 
 #mbm{
