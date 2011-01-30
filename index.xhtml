@@ -50,11 +50,11 @@
                 <ul id="tools">
                     <li id="logo">XML3D</li>
                     <li><button type="button" onclick="tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="media/icon.png" alt="bar"/></button></li>
+                    <li><button type="button" onclick="X3D.main.createBox('box3',3,3,3);"><img src="media/icon.png" alt="bar"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img onclick="X3D.tb.changeShaderDialog();" src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button" onclick="X3D.tb.createBoxDialog()"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li id="status"><div>&nbsp;</div></li>
@@ -122,8 +122,10 @@
 					
 				</span><br/>
 				<ol id="items">
-					<li>Example</li>
 				</ol>
+				<div id="dialogContent">
+					
+				</div>
 				<button onclick="X3D.dia.hm('box');X3D.dia.okSelected()">OK</button>
 			</div>
 		</div> 
