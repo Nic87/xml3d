@@ -116,3 +116,25 @@ border: 0;
 margin: 0 auto;
 width: 99%;
 }
+
+#mbox{
+background-color:#eee; 
+padding:8px; 
+border:2px outset #666;
+overflow:scroll;
+}
+
+#mbm{
+font-family:sans-serif;
+font-weight:bold;
+float:right;
+padding-bottom:5px;
+}
+
+#ol{
+background-image: url(overlay.png);
+}
+.dialog {display:none}
+
+* html #ol{background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="overlay.png", sizingMethod="scale");}
+                  

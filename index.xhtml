@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
+		<script type="text/javascript" src="lib/modalbox.js"></script>
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
-		<script type="text/javascript" src="lib/jquery-ui-1.8.9.custom.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cookie.js"></script>
         <script type="text/javascript" src="lib/xml3dwiki.js"></script>
         <script type="text/javascript" src="lib/util.js"></script>
@@ -19,6 +19,7 @@
             X3D.tb.init();
             X3D.ws.init();
             X3D.main.init();
+			X3D.dia.initmb();
 
             // ugly workaround
             $('#MyXml3d').css('height', window.innerHeight-33);
@@ -48,18 +49,18 @@
             <div class="toolbar">
                 <ul id="tools">
                     <li id="logo">XML3D</li>
-                    <li><button type="button" onclick="X3D.tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button" onclick="X3D.main.createBox('box3');"><img src="media/icon.png" alt="bar"/></button></li>
+                    <li><button type="button" onclick="tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button" onclick="X3D.main.createBox('box3',3,3,3);"><img src="media/icon.png" alt="bar"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button"><img onclick="X3D.tb.changeShaderDialog();" src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button" onclick="X3D.tb.createBoxDialog()"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li id="status"><div>&nbsp;</div></li>
                 </ul>
             </div>
-            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" activeView="#defaultView" physics:gravity="0 -10 0">
+            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 -10 0"> <!-- Ohne style funktioniert es nicht-->
                 <defs id="3dDefs">
                     <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" />
                     <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
@@ -110,5 +111,18 @@
             <h3 class="toolbar" id="debugheader">Debugging Output</h3>
             <textarea id="output" readonly="readonly"></textarea>
         </div>
+		<div id="box" class="dialog">
+			<div style="text-align:center">
+				<span id="txt">
+					
+				</span><br/>
+				<div id="items">
+				</div>
+				<div id="dialogContent">
+					
+				</div>
+				<button id='submitButton' onclick="X3D.dia.hm('box');X3D.dia.okSelected();">OK</button>
+			</div>
+		</div> 
     </body>
 </html>
