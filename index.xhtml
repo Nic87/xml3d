@@ -15,8 +15,8 @@
         <script type="text/javascript">
         $(document).ready(function() {
             X3D.log.init($('#output').get(0));
-            X3D.em.init($('#status div'));
-            X3D.tb.init();
+            X3D.em.init();
+            X3D.tb.init($('#status div'));
             X3D.ws.init();
             X3D.main.init();
 			X3D.dia.initmb();
@@ -41,6 +41,8 @@
             $('#status div').click(function(evt) {
                 X3D.ws.toggle();
             });
+
+            X3D.log.get("index.html").info("DOM ready");
         });
         </script>
     </head>
@@ -49,7 +51,7 @@
             <div class="toolbar">
                 <ul id="tools">
                     <li id="logo">XML3D</li>
-                    <li><button type="button" onclick="tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button" onclick="X3D.tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button" onclick="X3D.main.createBox('box3',3,3,3);"><img src="media/icon.png" alt="bar"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
