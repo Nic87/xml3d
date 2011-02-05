@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
-		<script type="text/javascript" src="lib/modalbox.js"></script>
+        <script type="text/javascript" src="lib/modalbox.js"></script>
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cookie.js"></script>
         <script type="text/javascript" src="lib/xml3dwiki.js"></script>
@@ -19,10 +19,10 @@
             X3D.tb.init($('#status div'));
             X3D.ws.init();
             X3D.main.init();
-			X3D.dia.initmb();
+            X3D.dia.initmb();
 
             // ugly workaround
-            //$('#MyXml3d').css('height', window.innerHeight-33);
+            $('#MyXml3d').css('height', window.innerHeight-33);
 
             $('#collexp').click(function(evt) {
                 $('#debug').slideToggle('fast', function() {
@@ -51,7 +51,7 @@
             <div class="toolbar">
                 <ul id="tools">
                     <li id="logo">XML3D</li>
-                    <li><button type="button" onclick="X3D.tb.addCube();"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><button type="button" onclick=""><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button" onclick="X3D.main.createBox('box3',3,3,3);"><img src="media/icon.png" alt="bar"/></button></li>
                     <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
                     <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
@@ -75,7 +75,7 @@
                         <float3 name="diffuseColor">0.0 0.0 1.0</float3>
                         <float name="ambientIntensity">1.0</float>
                     </shader>
-					<shader id="greenShader" script="urn:xml3d:shader:phong">
+                    <shader id="greenShader" script="urn:xml3d:shader:phong">
                         <float3 name="diffuseColor">0.0 1.0 0.0</float3>
                         <float name="ambientIntensity">1.0</float>
                     </shader>
@@ -90,10 +90,10 @@
                         <!--><int name="index">0 1 2  1 2 3</int>
                         <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
                         <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2> -->
-						<int name="index">0 1 2 2 3 0 4 7 5 5 7 6 8 9 10 10 11 8 12 14 13 14 12 15 16 17 18 18 19 16 20 22 21 22 20 23</int> 
-		            <float3 name="position">-1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 1.0 -1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 1.0 -1.0 1.0 1.0 -1.0 -1.0</float3> 
-		            <float3 name="normal">0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0</float3> 
-		            <float2 name="texcoord">1.0 0.0 1.0 1.0 0.0 1.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 0.0 1.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0</float2>
+                        <int name="index">0 1 2 2 3 0 4 7 5 5 7 6 8 9 10 10 11 8 12 14 13 14 12 15 16 17 18 18 19 16 20 22 21 22 20 23</int> 
+                    <float3 name="position">-1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 1.0 -1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 1.0 -1.0 1.0 1.0 -1.0 -1.0</float3> 
+                    <float3 name="normal">0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0</float3> 
+                    <float2 name="texcoord">1.0 0.0 1.0 1.0 0.0 1.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 0.0 1.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0</float2>
                     </data>
                 </defs>
                 <view id="defaultView" position="0 0 20" orientation="0 0 0 0"/>   
@@ -117,16 +117,16 @@
             <h3 class="toolbar" id="debugheader">Debugging Output</h3>
             <textarea id="output" readonly="readonly"></textarea>
         </div>
-		<div id="box" class="dialog">
-			<div style="text-align:center">
-				<ol id="items">
-				</ol>
-				<div id="dialogContent">
-					
-				</div>
-				<button id='submitButton' onclick="X3D.dia.hm('box');">OK</button>
-				<button onclick="X3D.dia.hm('box');">Cancel</button>
-			</div>
-		</div> 
+        <div id="box" class="dialog" style="display: none;">
+            <div style="text-align:center">
+                <ol id="items">
+                </ol>
+                <div id="dialogContent">
+                    
+                </div>
+                <button id='submitButton' onclick="X3D.dia.hm('box');">OK</button>
+                <button onclick="X3D.dia.hm('box');">Cancel</button>
+            </div>
+        </div> 
     </body>
 </html>

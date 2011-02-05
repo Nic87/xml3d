@@ -121,7 +121,6 @@ width: 99%;
 background-color:#eee; 
 padding:8px; 
 border:2px outset #666;
-overflow:scroll;
 }
 
 #mbm{
@@ -134,7 +133,3 @@ padding-bottom:5px;
 #ol{
 background-image: url(overlay.png);
 }
-.dialog {display:none}
-
-* html #ol{background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="overlay.png", sizingMethod="scale");}
-                  
