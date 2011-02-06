@@ -22,7 +22,7 @@
             X3D.dia.initmb();
 
             // ugly workaround
-            $('#MyXml3d').css('height', window.innerHeight-33);
+           // $('#MyXml3d').css('height', window.innerHeight-33);
 
             $('#collexp').click(function(evt) {
                 $('#debug').slideToggle('fast', function() {
@@ -79,6 +79,17 @@
                         <float3 name="diffuseColor">0.0 1.0 0.0</float3>
                         <float name="ambientIntensity">1.0</float>
                     </shader>
+					<shader id="winterShader" script="urn:xml3d:shader:phong">
+						<texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+							<img src="media/Winter.jpg"/>
+						</texture>
+					</shader>
+					<shader id="ixLogo" script="urn:xml3d:shader:phong">
+						<texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+							<img src="media/ix_logo.png"/>
+						</texture>
+					</shader>
+
                     <transform id="ex3_1_boxXfm" scale="1.5 0.5 1.0"  rotation="0 0 1 0.3" translation="-0.5 0 0"/>
                     <lightshader id="ex5_1_lightShader" script="urn:xml3d:lightshader:point">
                         <float3 name="intensity">0.9 0.6 0.3</float3>
