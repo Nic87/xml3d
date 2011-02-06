@@ -41,6 +41,18 @@ float:left;
 line-height:2em;
 }
 
+.toolbar ul#tools li input[type="button"] {
+background-repeat: no-repeat;
+background-position: center;
+border: 1px solid #ccc;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+-khtml-border-radius: 2px;
+border-radius: 2px;
+cursor:pointer;
+min-width: 30px;
+}
+
 .toolbar ul#tools li button {
 border: 1px solid #ccc;
 -moz-border-radius: 2px;

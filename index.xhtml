@@ -21,7 +21,7 @@
             X3D.main.init();
             X3D.dia.initmb();
 
-            // ugly workaround
+            // ugly workaround, but hey
             $('#MyXml3d').css('height', window.innerHeight-33);
 
             $('#collexp').click(function(evt) {
@@ -51,18 +51,18 @@
             <div class="toolbar">
                 <ul id="tools">
                     <li id="logo">XML3D</li>
-                    <li><button type="button" onclick=""><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button" onclick="X3D.main.createBox('box3',3,3,3);"><img src="media/icon.png" alt="bar"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img onclick="X3D.main.toggleMode();" src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img onclick="X3D.tb.changeShaderDialog();" src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button" onclick="X3D.tb.createBoxDialog()"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
-                    <li><button type="button"><img src="media/icon.png" alt="foo"/></button></li>
+                    <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
+                    <li><input type="button" title="not working" style="background-image: url(media/icon.png);" onclick="X3D.main.createBox('box3',3,3,3);"/></li>
+                    <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
+                    <li><input type="button" title="toggle mode" style="background-image: url(media/icon.png);" onclick="X3D.main.toggleMode();"/></li>
+                    <li><input type="button" title="change shader" style="background-image: url(media/icon.png);" onclick="X3D.tb.changeShaderDialog();"/></li>
+                    <li><input type="button" title="create box" style="background-image: url(media/icon.png);" onclick="X3D.tb.createBoxDialog()"/></li>
+                    <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
+                    <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
                     <li id="status"><div>&nbsp;</div></li>
                 </ul>
             </div>
-            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 -10 0"> <!-- Ohne style funktioniert es nicht-->
+            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 -10 0">
                 <defs id="3dDefs">
                     <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" />
                     <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
@@ -119,11 +119,8 @@
         </div>
         <div id="box" class="dialog" style="display: none;">
             <div style="text-align:center">
-                <ol id="items">
-                </ol>
-                <div id="dialogContent">
-                    
-                </div>
+                <ol id="items"></ol>
+                <div id="dialogContent"></div>
                 <button id='submitButton' onclick="X3D.dia.hm('box');">OK</button>
                 <button onclick="X3D.dia.hm('box');">Cancel</button>
             </div>
