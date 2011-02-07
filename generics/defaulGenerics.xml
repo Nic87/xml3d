@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
 <generics prefix="default">
 	<groups id='group'>
-		<group shader="#Material" transform="#t_Suzanne"> 
+		<group id='test' shader="#Material" transform="#t_Suzanne"> 
 			<mesh src="#Suzanne_data" type="triangles"/> 
 		</group>
 	</groups>
@@ -22,7 +24,7 @@
 		</data> 
 	</meshData>
 	<shaders id='shader'>
-		<shader id="Material" script="urn:xml3d:shader:phong"> 
+		<shader  id="Material" script="urn:xml3d:shader:phong"> 
 			<float name="ambientIntensity"> 
 			0.0
 			</float> 
@@ -36,5 +38,5 @@
 			0.2
 			</float> 
 		</shader> 
-	<shaders>
+	</shaders>
 </generics>
