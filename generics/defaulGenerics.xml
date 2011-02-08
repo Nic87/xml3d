@@ -16,7 +16,7 @@
 	<transformers id='transform'>
 		<transform id="t_Suzanne" rotation="0.364491 0.419457 0.831386 2.110558" scale="1.000000 1.000000 1.000000" translation="-0.470811 0.394874 0.000000"/> 
 		<transform id="t_Lamp" rotation="0.205942 0.331517 0.920698 1.926274" scale="1.000000 1.000000 1.000000" translation="4.076245 1.005454 5.903862"/> 
-		<transform id="box" translation="0 0 0" />
+		<transform id="box" translation="0.0 0.0 0.0" />
 	</transformers>
 	<meshData id='data'>
 		<data id="Suzanne_data"> 
