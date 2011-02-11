@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
 <generics prefix="default">
 	<groups id='group'>
-		<group id='test' shader="#Material" transform="#t_Suzanne"> 
+		<group id='Suzanne' shader="#Material" transform="#t_Suzanne"> 
 			<mesh src="#Suzanne_data" type="triangles"/> 
 		</group>
-		<group id='test2' transform="#t_Lamp"> 
+		<group id='Licht' transform="#t_Lamp"> 
 			<light shader="#ls_Spot"/> 
 		</group>
-		<group id="box1" transform="#box" shader="#blueShader">
+		<group id="Quadrat" transform="#box" shader="#blueShader">
 			<mesh type="triangles" src="#squareData"></mesh>
 		</group>
 	</groups>
