@@ -12,7 +12,7 @@
 		<group id="Quadrat" transform="#box" shader="#blueShader">
 			<mesh type="triangles" src="#squareData"></mesh>
 		</group>
-		<group shader="#Material2" transform="#t_Cube.004">
+		<group id="Stuhl" shader="#Material2" transform="#t_Cube.004">
 		  <mesh src="#Cube.004_data" type="triangles"/>
 		 </group>
 	</groups>
