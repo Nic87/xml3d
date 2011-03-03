@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
+        <script type="text/javascript" src="lib/xml3d.js"></script>
         <script type="text/javascript" src="lib/modalbox.js"></script>
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cookie.js"></script>
@@ -62,7 +63,7 @@
                     <li><input type="button" title="Insert Generic Element" style="background-image: url(media/icon.png);" onclick="X3D.tb.createBoxDialog()"/></li>
                     <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
                     <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
-                    <li><input type="checkbox" title="show light source" onclick="X3D.main.showLights();"/>show light</li>
+                    <li><input type="checkbox" title="show light source" onclick="X3D.main.toggleLights();"/>show light</li>
                     <li id="status"><div>&nbsp;</div></li>
                 </ul>
             </div>
@@ -102,9 +103,6 @@
                     </lightshader>
                     <transform id="ex5_1_lightXfm" translation="0 1.5 -4.5"/>
                     <data id="squareData" >
-                        <!--><int name="index">0 1 2  1 2 3</int>
-                        <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
-                        <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2> -->
                         <int name="index">0 1 2 2 3 0 4 7 5 5 7 6 8 9 10 10 11 8 12 14 13 14 12 15 16 17 18 18 19 16 20 22 21 22 20 23</int> 
                     <float3 name="position">-1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 1.0 -1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 1.0 -1.0 1.0 1.0 -1.0 -1.0</float3> 
                     <float3 name="normal">0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0</float3> 
@@ -122,7 +120,7 @@
             </xml3d>
             <br />
             <div id="xml3d_scripts"> 
-                <script type="text/javascript" src="lib/xml3d.js"></script>
+                
             </div> 
         </div>
         <div id="expand">
