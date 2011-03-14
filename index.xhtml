@@ -14,6 +14,7 @@
         <script type="text/javascript" src="lib/em.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
 		<script type="text/javascript" src="lib/genericsHandler.js"></script>
+		<script type="text/javascript" src="lib/perspective.js"></script> <!-- Rotation und Bewegung der Perspektive über die Maus von Lukas -->
         <script type="text/javascript">
         $(document).ready(function() {
             X3D.log.init($('#output').get(0));
@@ -22,7 +23,9 @@
             X3D.ws.init();
             X3D.main.init();
             X3D.dia.initmb();
+			X3D.listener.init(); <!-- Funktion aus perspective.js -->
 			X3D.gen.init();
+			 
 
 
             // ugly workaround
