@@ -1,0 +1,25 @@
+{
+    actionType: "update",
+    isAttribute:"true",
+    elementId: "blueShadder",
+    fieldName: "diffuseColor",
+    value: "0.000000 0.188297 1.000000"
+}
+
+{
+    actionType: "creation",
+    elementId: "box3", 
+    groupId: "default", 
+    genericId: "Quadrat", 
+    rotation:"0 0 0 1", 
+    translation: "2 2 2", 
+    scale: "1 1 1"
+}
+
+{ 
+    actionType:"delete", 
+    elementId:"t_Cube.002"
+}
+
+
+
