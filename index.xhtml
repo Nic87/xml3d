@@ -77,6 +77,10 @@
                     <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
                     <transform id="posTransformbox3" translation="3 0 0" />
 					<transform id="t_Cube.002" rotation="-0.913752 -0.288358 -0.286194 1.420921" scale="8.800000 0.040000 5.200000" translation="0.839277 1.194822 -6.712218"/> <!-- room -->
+					<transform id="Linie" scale="5 0.1 1"  rotation="0 0 0 0" translation="0 0 0"/>
+					<transform id="Linie2" scale="5 0.1 1"  rotation="0 1 0 1.570796" translation="0 0 0"/>
+					<transform id="Linie3" scale="5 0.1 1"  rotation="0 0 1 1.570796" translation="-5 0 0"/>
+				
 					<lightshader id="ls_Spot" script="urn:xml3d:lightshader:point">  <!-- Licht zum testen -->
 						<bool name="castShadow"> 
 						true
@@ -154,7 +158,7 @@
                 </defs>
                 <view id="defaultView" position="0 0 20" orientation="0 0 0 0"/>   
 				
-				<view id="defaultView_2" position="0 0 40" orientation="0 0 0 0"/>  
+				<view id="defaultView_2" position="5 0 20" orientation="0 0 0 0"/>  
 				 
                 <group id="box1" transform="#ex6_1_boxXfm1" shader="#blueShader">
                     <mesh type="triangles" src="#squareData"></mesh>
@@ -163,11 +167,32 @@
                 <group id="box2" transform="#ex6_1_boxXfm2" shader="#blueShader">
                     <mesh type="triangles" src="#squareData"></mesh>
                 </group>
-				<group id='Licht' transform="#t_Lamp">  <!-- Licht zum testen -->
+				<group id='Licht' transform="#t_Lamp">
 				 <light shader="#ls_Spot"/> 
 			    </group>
 				<group shader="#Material.001" transform="#t_Cube.002">
 				<mesh src="#Cube.003_data" type="triangles"/>
+				</group>
+				<group style="-moz-transform: url(#Linie); transform: url(#Linie);" >
+				<mesh type="triangles">
+				  <int name="index">0 1 2  1 2 3</int>
+				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
+				  <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2>
+				</mesh>
+				</group>
+				<group style="-moz-transform: url(#Linie2); transform: url(#Linie2);" >
+				<mesh type="triangles">
+				  <int name="index">0 1 2  1 2 3</int>
+				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
+				  <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2>
+				</mesh>
+				</group>
+				<group style="-moz-transform: url(#Linie3); transform: url(#Linie3);" >
+				<mesh type="triangles">
+				  <int name="index">0 1 2  1 2 3</int>
+				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
+				  <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2>
+				</mesh>
 				</group>
             </xml3d>
             <br />
