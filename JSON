@@ -1,0 +1,11 @@
+{
+  action: “create”,
+  attributes: {
+    foo: “bar”,
+    asd: “foobar”
+  },
+  meta: {
+   template: “foo.bar”,
+   parent: “#iasdasd”
+  }
+}
