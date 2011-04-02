@@ -109,12 +109,12 @@
             <float name="ambientIntensity">1.0</float>
         </shader>
         <shader id="winterShader" script="urn:xml3d:shader:phong">
-            <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+            <texture id="texturewinterShader" name="diffuseTexture" wrapS="repeat" wrapT="repeat">
                 <img src="media/winter.jpg"/>
             </texture>
         </shader>
         <shader id="ixLogo" script="urn:xml3d:shader:phong">
-            <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+            <texture id="textureixLogo" name="diffuseTexture" wrapS="repeat" wrapT="repeat">
                 <img src="media/ix_logo.png"/>
             </texture>
         </shader>
