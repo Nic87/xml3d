@@ -150,5 +150,10 @@
 			0.0978473581213
 			</float>
 	    </color>
+		<color id="transparant">
+			<float name="transparency">
+			1.0
+			</float>
+	    </color>
 	</colors>
 </generics>
