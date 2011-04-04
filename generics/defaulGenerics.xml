@@ -124,12 +124,12 @@
             <float name="ambientIntensity">1.0</float>
         </shader>
         <shader id="winterShader" script="urn:xml3d:shader:phong">
-            <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+            <texture id="texturewinterShader" name="diffuseTexture" wrapS="repeat" wrapT="repeat">
                 <img src="media/winter.jpg"/>
             </texture>
         </shader>
         <shader id="ixLogo" script="urn:xml3d:shader:phong">
-            <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+            <texture id="textureixLogo" name="diffuseTexture" wrapS="repeat" wrapT="repeat">
                 <img src="media/ix_logo.png"/>
             </texture>
         </shader>
@@ -142,4 +142,41 @@
 			</float>
 		</shader>
     </shaders>
+	<colors>
+		<color id="green">
+			<float3 name="diffuseColor">0.0 1.0 0.0</float3>
+            <float name="ambientIntensity">1.0</float>
+		</color>
+		<color id="red">
+			<float3 name="diffuseColor">1.0 0.0 0.0</float3>
+            <float name="ambientIntensity">1.0</float>
+		</color>
+		<color id="blue">
+			<float3 name="diffuseColor">0.0 0.0 1.0</float3>
+            <float name="ambientIntensity">1.0</float>
+		</color>
+		<color id="yellow">
+			<float3 name="diffuseColor">1.0 1.0 0.0</float3>
+            <float name="ambientIntensity">1.0</float>
+		</color>
+		<color id="material">
+			<float name="ambientIntensity">
+			0.0
+			</float>
+			<float3 name="diffuseColor">
+			0.800000 0.800000 0.800000
+			</float3>
+			<float3 name="specularColor">
+			0.500000 0.500000 0.500000
+			</float3>
+			<float name="shininess">
+			0.0978473581213
+			</float>
+	    </color>
+		<color id="transparant">
+			<float name="transparency">
+			1.0
+			</float>
+	    </color>
+	</colors>
 </generics>

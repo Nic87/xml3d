@@ -59,23 +59,25 @@
                 <ul id="tools">
                     <li id="logo">XML3D</li>
                     <li><input type="button" title="delete elements" style="background-image: url(media/icon.png);" onclick="X3D.main.deleteElement();"/></li>
-                    <li><input type="button" title="nothing" style="background-image: url(media/icon.png);" /></li>
+
                     <li><input type="button" title="Create Room" style="background-image: url(media/icon.png);" onclick="X3D.tb.createRoomDialog();"/></li>
-                    <li><input type="button" title="toggle mode" style="background-image: url(media/icon.png);" onclick="X3D.main.toggleMode();"/></li>
-                    <li><input type="button" title="change shader" style="background-image: url(media/icon.png);" onclick="X3D.tb.changeShaderDialog();"/></li>
-                    <li><input type="button" title="Insert Generic Element" style="background-image: url(media/icon.png);" onclick="X3D.tb.createBoxDialog()"/></li>
+                    <li><input type="button" title="Change Color" onclick="X3D.tb.changeColorDialog();" style="background-image: url(media/change_color.png);"/></li>
+                    <li><input type="button" title="toggle mode" style="background-image: url(media/change_movement_mode.png);" onclick="X3D.main.toggleMode();"/></li>
+                    <li><input type="button" title="change texture" style="background-image: url(media/change_texture.png);" onclick="X3D.tb.changeShaderDialog();"/></li>
+                    <li><input type="button" title="Insert Generic Element" style="background-image: url(media/create_new_element.png);" onclick="X3D.tb.createBoxDialog()"/></li>
                     <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
-                    <li><input type="button" title="change view" style="background-image: url(media/icon.png);" onclick="X3D.main.createViewDialog()"/></li>
+                    <li><input type="button" title="change view" style="background-image: url(media/change_perspective.png);" onclick="X3D.main.createViewDialog()"/></li>
                     <li><input type="checkbox" title="show light source" onclick="X3D.main.toggleLights();"/>show light</li>
                     <li id="status"><div>&nbsp;</div></li>
                 </ul>
             </div>
             <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 -10 0">
                 <defs id="3dDefs">
+					<shader id="redShader" script="urn:xml3d:shader:phong">
+						<float3 name="diffuseColor">1.0 0.0 0.0</float3>
+						<float name="ambientIntensity">1.0</float>
+					</shader>
 					<transform id="t_Lamp" rotation="0.205942 0.331517 0.920698 1.926274" scale="1.000000 1.000000 1.000000" translation="4.076245 1.005454 5.903862"/> 
-                    <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" scale="0.000000 0.000000 0.000000"/>
-                    <transform id="ex6_1_boxXfm2" translation="1.5 0 0" scale="0.000000 0.000000 0.000000"/>
-                    <transform id="posTransformbox3" translation="3 0 0" />
 					<transform id="t_Cube.002" rotation="-0.913752 -0.288358 -0.286194 1.420921" scale="8.800000 0.040000 5.200000" translation="0.839277 1.194822 -6.712218"/> <!-- room -->
 					<transform id="Linie" scale="5 0.1 1"  rotation="0 0 0 0" translation="0 0 0"/>
 					<transform id="Linie2" scale="5 0.1 1"  rotation="0 1 0 1.570796" translation="0 0 0"/>
@@ -104,29 +106,6 @@
 					</float3>
 					</data>
 					
-                    <shader id="redShader" script="urn:xml3d:shader:phong">
-                        <float3 name="diffuseColor">1.0 0.0 0.0</float3>
-                        <float name="ambientIntensity">1.0</float>
-                    </shader>
-                    <shader id="blueShader" script="urn:xml3d:shader:phong">
-                        <float3 name="diffuseColor">0.0 0.0 1.0</float3>
-                        <float name="ambientIntensity">1.0</float>
-                    </shader>
-                    <shader id="greenShader" script="urn:xml3d:shader:phong">
-                        <float3 name="diffuseColor">0.0 1.0 0.0</float3>
-                        <float name="ambientIntensity">1.0</float>
-                    </shader>
-					<shader id="winterShader" script="urn:xml3d:shader:phong">
-						<texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
-							<img src="media/winter.jpg"/>
-						</texture>
-					</shader>
-					<shader id="ixLogo" script="urn:xml3d:shader:phong">
-						<texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
-							<img src="media/ix_logo.png"/>
-						</texture>
-					</shader>
-					
 					<shader id="Material.001" script="urn:xml3d:shader:phong"> <!-- room -->
 					<float name="ambientIntensity">
 					 0.0
@@ -141,59 +120,19 @@
 					 0.0978473581213
 					</float>
 					</shader>
-
-                    <transform id="ex3_1_boxXfm" scale="1.5 0.5 1.0"  rotation="0 0 1 0.3" translation="-0.5 0 0"/>
                     <lightshader id="ex5_1_lightShader" script="urn:xml3d:lightshader:point">  <!-- Licht zum testen -->
                         <float3 name="intensity">0.9 0.6 0.3</float3>
                         <float3 name="attenuation">0 0 1</float3>
                         <bool name="castShadow">true</bool>
                     </lightshader>
                     <transform id="ex5_1_lightXfm" translation="0 1.5 -4.5"/>
-                    <data id="squareData" >
-                        <int name="index">0 1 2 2 3 0 4 7 5 5 7 6 8 9 10 10 11 8 12 14 13 14 12 15 16 17 18 18 19 16 20 22 21 22 20 23</int> 
-                    <float3 name="position">-1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 1.0 -1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 1.0 -1.0 1.0 1.0 -1.0 -1.0</float3> 
-                    <float3 name="normal">0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0</float3> 
-                    <float2 name="texcoord">1.0 0.0 1.0 1.0 0.0 1.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 0.0 1.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0</float2>
-                    </data>
                 </defs>
                 <view id="defaultView" position="0 0 20" orientation="0 0 0 0"/>   
 				
 				<view id="defaultView_2" position="5 0 20" orientation="0 0 0 0"/>  
-				 
-                <group id="box1" transform="#ex6_1_boxXfm1" shader="#blueShader">
-                    <mesh type="triangles" src="#squareData"></mesh>
-                </group>
-
-                <group id="box2" transform="#ex6_1_boxXfm2" shader="#blueShader">
-                    <mesh type="triangles" src="#squareData"></mesh>
-                </group>
 				<group id='Licht' transform="#t_Lamp">
 				 <light shader="#ls_Spot"/> 
 			    </group>
-				<!--<group shader="#Material.001" transform="#t_Cube.002">
-				<mesh src="#Cube.003_data" type="triangles"/>
-				</group>-->
-				<!--<group style="-moz-transform: url(#Linie); transform: url(#Linie);" >
-				<mesh type="triangles">
-				  <int name="index">0 1 2  1 2 3</int>
-				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
-				  <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2>
-				</mesh>
-				</group>
-				<group style="-moz-transform: url(#Linie2); transform: url(#Linie2);" >
-				<mesh type="triangles">
-				  <int name="index">0 1 2  1 2 3</int>
-				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
-				  <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2>
-				</mesh>
-				</group>
-				<group style="-moz-transform: url(#Linie3); transform: url(#Linie3);" >
-				<mesh type="triangles">
-				  <int name="index">0 1 2  1 2 3</int>
-				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
-				  <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2>
-				</mesh>
-				</group>-->
             </xml3d>
             <br />
             <div id="xml3d_scripts"> 
