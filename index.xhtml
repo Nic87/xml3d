@@ -60,7 +60,7 @@
                     <li id="logo">XML3D</li>
                     <li><input type="button" title="delete elements" style="background-image: url(media/icon.png);" onclick="X3D.main.deleteElement();"/></li>
                     <li><input type="button" title="nothing" style="background-image: url(media/icon.png);" /></li>
-                    <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
+                    <li><input type="button" title="Create Room" style="background-image: url(media/icon.png);" onclick="X3D.tb.createRoomDialog();"/></li>
                     <li><input type="button" title="toggle mode" style="background-image: url(media/icon.png);" onclick="X3D.main.toggleMode();"/></li>
                     <li><input type="button" title="change shader" style="background-image: url(media/icon.png);" onclick="X3D.tb.changeShaderDialog();"/></li>
                     <li><input type="button" title="Insert Generic Element" style="background-image: url(media/icon.png);" onclick="X3D.tb.createBoxDialog()"/></li>
@@ -73,8 +73,8 @@
             <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 -10 0">
                 <defs id="3dDefs">
 					<transform id="t_Lamp" rotation="0.205942 0.331517 0.920698 1.926274" scale="1.000000 1.000000 1.000000" translation="4.076245 1.005454 5.903862"/> 
-                    <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" />
-                    <transform id="ex6_1_boxXfm2" translation="1.5 0 0" />
+                    <transform id="ex6_1_boxXfm1" translation="-1.5 0 0" scale="0.000000 0.000000 0.000000"/>
+                    <transform id="ex6_1_boxXfm2" translation="1.5 0 0" scale="0.000000 0.000000 0.000000"/>
                     <transform id="posTransformbox3" translation="3 0 0" />
 					<transform id="t_Cube.002" rotation="-0.913752 -0.288358 -0.286194 1.420921" scale="8.800000 0.040000 5.200000" translation="0.839277 1.194822 -6.712218"/> <!-- room -->
 					<transform id="Linie" scale="5 0.1 1"  rotation="0 0 0 0" translation="0 0 0"/>
@@ -170,10 +170,10 @@
 				<group id='Licht' transform="#t_Lamp">
 				 <light shader="#ls_Spot"/> 
 			    </group>
-				<group shader="#Material.001" transform="#t_Cube.002">
+				<!--<group shader="#Material.001" transform="#t_Cube.002">
 				<mesh src="#Cube.003_data" type="triangles"/>
-				</group>
-				<group style="-moz-transform: url(#Linie); transform: url(#Linie);" >
+				</group>-->
+				<!--<group style="-moz-transform: url(#Linie); transform: url(#Linie);" >
 				<mesh type="triangles">
 				  <int name="index">0 1 2  1 2 3</int>
 				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
@@ -193,7 +193,7 @@
 				  <float3 name="position">-1 -1 -5 1 -1 -5 -1 1 -5 1 1 -5</float3>
 				  <float2 name="texcoord">0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0</float2>
 				</mesh>
-				</group>
+				</group>-->
             </xml3d>
             <br />
             <div id="xml3d_scripts"> 
