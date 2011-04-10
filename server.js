@@ -11,9 +11,6 @@ ws.createServer(function (websocket) {
   }).addListener("data", function (data) { 
     // handle incoming data
     sys.debug(data);
-
-    // send data to client
-    websocket.write("Thanks!");
   }).addListener("close", function () { 
     // emitted when server or client closes connection
     sys.debug("close");
