@@ -65,7 +65,7 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
                     <li><input type="button" title="Create Room" style="background-image: url(media/icon.png);" onclick="X3D.tb.createRoomDialog();"/></li>
                     <li><input type="button" title="Change Color" onclick="X3D.tb.changeColorDialog();" style="background-image: url(media/change_color.png);"/></li>
                     <li><input type="button" title="toggle mode" style="background-image: url(media/change_movement_mode.png);" onclick="X3D.main.toggleMode();"/></li>
-                    <li><input type="button" title="change texture" style="background-image: url(media/change_texture.png);" onclick="X3D.tb.changeShaderDialog();"/></li>
+                    <li><input type="button" title="change texture" style="background-image: url(media/change_texture.png);" onclick="X3D.tb.changeTextureDialog();"/></li>
                     <li><input type="button" title="Insert Generic Element" style="background-image: url(media/create_new_element.png);" onclick="X3D.tb.createBoxDialog()"/></li>
                     <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
                     <li><input type="button" title="change view" style="background-image: url(media/change_perspective.png);" onclick="X3D.main.createViewDialog()"/></li>
@@ -152,7 +152,7 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
             <div style="text-align:center">
                 <ol id="items"></ol>
                 <div id="dialogContent"></div>
-                <button id='submitButton' onclick="X3D.dia.hm('box');">OK</button>
+                <button id='submitButton' >OK</button><!--onclick="X3D.dia.hm('box');"-->
                 <button onclick="X3D.dia.hm('box');">Cancel</button>
             </div>
         </div> 
