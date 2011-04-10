@@ -147,7 +147,7 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
                 <h3 style="display: inline;">Debugging Output</h3>
                 <div style="float: right; padding-right: 5px;">
                     <button onclick="javascript: $('#output').val($('#output').val()+(new Array(125).join('-'))+'\n')">insert marker</button> |
-                    <button onclick="javascript: $('#output').empty()">clear</button>
+                    <button onclick="javascript: $('#output').val('')">clear</button>
                 </div>
             </div>
             <textarea id="output" readonly="readonly"></textarea>
