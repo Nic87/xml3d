@@ -1,0 +1,3 @@
+* update nachrichten beziehen sich immer auf shader und es gibt nur
+  diffuseColor Änderungen -> quick fix
+* später wird ein neuer untertyp von update nachrichten eingeführt
