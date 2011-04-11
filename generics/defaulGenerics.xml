@@ -175,7 +175,7 @@
 	    </color>
 		<color id="transparant">
 			<float name="transparency">
-			1.0
+			0.9
 			</float>
 	    </color>
 	</colors>
