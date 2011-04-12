@@ -1,5 +1,5 @@
 var sys = require("sys"),
-ws = require("./node.ws.js/ws.js");
+ws = require("./nodelibs/ws.js");
 
 ws.createServer(function (websocket) {
   websocket.addListener("connect", function (resource) { 
