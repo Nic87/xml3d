@@ -67,8 +67,9 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
                     <li><input type="button" title="toggle mode" style="background-image: url(media/change_movement_mode.png);" onclick="X3D.main.toggleMode();"/></li>
                     <li><input type="button" title="change texture" style="background-image: url(media/change_texture.png);" onclick="X3D.tb.changeTextureDialog();"/></li>
                     <li><input type="button" title="Insert Generic Element" style="background-image: url(media/create_new_element.png);" onclick="X3D.tb.createBoxDialog()"/></li>
-                    <li><input type="button" title="nothing" style="background-image: url(media/icon.png);"/></li>
                     <li><input type="button" title="change view" style="background-image: url(media/change_perspective.png);" onclick="X3D.main.createViewDialog()"/></li>
+					<li><input type="button" title="Undo" onclick="X3D.queue.undo()" style="background-image: url(media/icon.png);"/></li>
+					<li><input type="button" title="Redo" onclick="X3D.queue.redo()" style="background-image: url(media/icon.png);"/></li>
                     <li><input type="checkbox" title="show light source" onclick="X3D.main.toggleLights();"/>show light</li>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;Mode:</li>
 					<li><input id='currentMode' type="text" value="Default"/></li>
