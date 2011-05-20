@@ -1,0 +1,21 @@
+# Requests
+{
+actionType: "lockRequest",
+elementId: $id
+}
+
+{
+actionType: "lockRelease",
+elementId: $id
+}
+
+# Replies
+{
+actionType: "lockGranted",
+elementId: $id
+}
+
+{
+actionType: "lockDenied",
+elementId: $id
+}
