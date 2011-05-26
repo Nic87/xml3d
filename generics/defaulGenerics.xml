@@ -3,19 +3,19 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
 <generics prefix="default">
     <groups id='group'>
-        <group id='Suzanne' shader="#Material" transform="#t_Suzanne"> 
+        <group id='Suzanne' shader="#Material" transform="#t_Suzanne" type="onwall"> 
             <mesh src="#Suzanne_data" type="triangles"/> 
         </group>
         <group id='Licht' transform="#t_Lamp"> 
             <light shader="#ls_Spot"/> 
         </group>
-        <group id="Quadrat" transform="#box" shader="#blueShader">
+        <group id="Quadrat" transform="#box" shader="#blueShader" type="ground">
             <mesh type="triangles" src="#squareData"></mesh>
         </group>
-        <group id="Stuhl" shader="#Material2" transform="#t_Cube.004">
+        <group id="Stuhl" shader="#Material2" transform="#t_Cube.004" type="ground">
           <mesh src="#Cube.004_data" type="triangles"/>
         </group>
-		<group id= "Wand" shader="#_no_mat" transform="#t_Plane"> <!-- fuer Raumgestaltung von lukas -->		
+		<group id= "Wand" shader="#_no_mat" transform="#t_Plane" type="wall"> <!-- fuer Raumgestaltung von lukas -->		
 			<mesh src="#Plane_data" type="triangles"/>
 		</group>
     </groups>
