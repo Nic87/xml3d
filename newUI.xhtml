@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
-<title>XML3D - Spatial Planner</title>
-<link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
-        <script type="text/javascript" src="lib/menu.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
         <script type="text/javascript" src="lib/xml3d.js"></script>
         <script type="text/javascript" src="lib/modalbox.js"></script>
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cookie.js"></script>
-                <script type="text/javascript" src="lib/actionQueue.js"></script>
+		<script type="text/javascript" src="lib/actionQueue.js"></script>
         <script type="text/javascript" src="lib/xml3dwiki.js"></script>
         <script type="text/javascript" src="lib/util.js"></script>
         <script type="text/javascript" src="lib/toolbar.js"></script>
         <script type="text/javascript" src="lib/em.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
         <script type="text/javascript" src="lib/genericsHandler.js"></script>
-
+        <script type="text/javascript" src="lib/perspective.js"></script> <!-- Rotation und Bewegung der Perspektive über die Maus von Lukas -->
 
         <script type="text/javascript">
         $(document).ready(function() {
@@ -29,7 +27,7 @@
             X3D.dia.initmb();
             X3D.listener.init(); <!-- Funktion aus perspective.js -->
             X3D.gen.init();
-                        X3D.queue.init();
+			X3D.queue.init();
             // ugly workaround
             // $('#MyXml3d').css('height', window.innerHeight-33);
 
@@ -57,9 +55,9 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
             X3D.log.get("index.html").info("DOM ready");
         });
         </script>
-</head>
+    </head>
 
-<body onload="init_nav()">
+<body>
 <div class="toolbar">
          <ul id="tools">
          <li id="logo">XML3D</li>
