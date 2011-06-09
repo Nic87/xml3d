@@ -1,22 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
-        <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
+<title>XML3D - Spatial Planner</title>
+<link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
+        <script type="text/javascript" src="lib/menu.js"></script>
         <script type="text/javascript" src="lib/xml3d.js"></script>
         <script type="text/javascript" src="lib/modalbox.js"></script>
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cookie.js"></script>
-		<script type="text/javascript" src="lib/actionQueue.js"></script>
+                <script type="text/javascript" src="lib/actionQueue.js"></script>
         <script type="text/javascript" src="lib/xml3dwiki.js"></script>
         <script type="text/javascript" src="lib/util.js"></script>
         <script type="text/javascript" src="lib/toolbar.js"></script>
         <script type="text/javascript" src="lib/em.js"></script>
         <script type="text/javascript" src="lib/comm.js"></script>
         <script type="text/javascript" src="lib/genericsHandler.js"></script>
-        <script type="text/javascript" src="lib/perspective.js"></script> <!-- Rotation und Bewegung der Perspektive über die Maus von Lukas -->
-		
+
+
         <script type="text/javascript">
         $(document).ready(function() {
             X3D.log.init($('#output').get(0));
@@ -27,7 +29,7 @@
             X3D.dia.initmb();
             X3D.listener.init(); <!-- Funktion aus perspective.js -->
             X3D.gen.init();
-			X3D.queue.init();
+                        X3D.queue.init();
             // ugly workaround
             // $('#MyXml3d').css('height', window.innerHeight-33);
 
@@ -55,37 +57,41 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
             X3D.log.get("index.html").info("DOM ready");
         });
         </script>
-    </head>
-    <body>
-        <div id="main">
-            <div class="toolbar">
-                <ul id="tools">
-                    <li id="logo">XML3D</li>
-                    <li><input type="button" title="delete elements" style="background-image: url(media/delete_object.png);" onclick="X3D.main.deleteElement();"/></li>
-                    <li><input type="button" title="Create Room" style="background-image: url(media/create_new_dimension.png);" onclick="X3D.tb.createRoomDialog();"/></li>
-                    <li><input type="button" title="Change Color" onclick="X3D.tb.changeColorDialog();" style="background-image: url(media/change_color.png);"/></li>
-                    <li><input type="button" title="toggle mode" style="background-image: url(media/change_movement_mode.png);" onclick="X3D.main.toggleMode();"/></li>
-                    <li><input type="button" title="change texture" style="background-image: url(media/change_texture.png);" onclick="X3D.tb.changeTextureDialog();"/></li>
-                    <li><input type="button" title="Insert Generic Element" style="background-image: url(media/create_new_element.png);" onclick="X3D.tb.createBoxDialog()"/></li>
-                    <li><input type="button" title="change view" style="background-image: url(media/change_perspective.png);" onclick="X3D.main.createViewDialog()"/></li>
-					<li><input type="button" title="Undo" onclick="X3D.queue.undo()" style="background-image: url(media/icon.png);"/></li>
-					<li><input type="button" title="Redo" onclick="X3D.queue.redo()" style="background-image: url(media/icon.png);"/></li>
-                    <li><input type="checkbox" title="show light source" onclick="X3D.main.toggleLights();"/>show light</li>
-                    <li>&nbsp;&nbsp;&nbsp;&nbsp;Mode:</li>
-					<li><input id='currentMode' type="text" value="Default"/></li>
-					<li id="status"><div>&nbsp;</div></li>
-					
-                </ul>
-            </div>
-	 <div id="rechts">
-                 <div id="rightHeader">Items in Room</div>
-                 <!-- BrowseList -->
-                 <div id="rightContent">
+</head>
+
+<body onload="init_nav()">
+<div class="toolbar">
+         <ul id="tools">
+         <li id="logo">XML3D</li>
+         <li><input type="button" title="delete elements" style="background-image: url(media/delete_object.png);" onclick="X3D.main.deleteElement();"/></li>
+         <li><input type="button" title="Create Room" style="background-image: url(media/create_new_dimension.png);" onclick="X3D.tb.createRoomDialog();"/></li>
+         <li><input type="button" title="Change Color" onclick="X3D.tb.changeColorDialog();" style="background-image: url(media/change_color.png);"/></li>
+         <li><input type="button" title="toggle mode" style="background-image: url(media/change_movement_mode.png);" onclick="X3D.main.toggleMode();"/></li>
+         <li><input type="button" title="change texture" style="background-image: url(media/change_texture.png);" onclick="X3D.tb.changeTextureDialog();"/></li>
+         <li><input type="button" title="Insert Generic Element" style="background-image: url(media/create_new_element.png);" onclick="X3D.tb.createBoxDialog()"/></li>
+         <li><input type="button" title="change view" style="background-image: url(media/change_perspective.png);" onclick="X3D.main.createViewDialog()"/></li>
+         <li><input type="button" title="Undo" onclick="X3D.queue.undo()" style="background-image: url(media/icon.png);"/></li>
+         <li><input type="button" title="Redo" onclick="X3D.queue.redo()" style="background-image: url(media/icon.png);"/></li>
+         <li><input type="checkbox" title="show light source" onclick="X3D.main.toggleLights();"/>show light</li>
+         <li>&nbsp;&nbsp;&nbsp;&nbsp;Mode:</li>
+         <li><input id='currentMode' type="text" value="Default"/></li>
+         <li id="status"><div>&nbsp;</div></li>
+         </ul>
+</div>
+
+<div class="mitte">
+         <div id="rechts">
+                 <div id="right">
+                         <div id="rightHeader">Items in Room</div>
+                         <!-- BrowseList -->
+                         <div id="rightContent">
+
                          <b>Room parts</b><br />
                          <input type="checkbox" name="zutat" value="salami" />Door1<br />
                          <input type="checkbox" name="zutat" value="pilze" />Window1<br />
                          <input type="checkbox" name="zutat" value="sardellen" />Window2<br />
                          <input type="checkbox" name="zutat" value="sardellen" />Floor<br />
+
 
                          <b>Light sources</b><br />
                          <input type="checkbox" name="zutat" value="sardellen" />light1<br />
@@ -100,9 +106,12 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
                          <input type="checkbox" name="zutat" value="sardellen" />TV<br />
                          <input type="checkbox" name="zutat" value="sardellen" />Chair1<br />
                          <input type="checkbox" name="zutat" value="sardellen" />cupboard<br />
+
+                         </div>
                  </div>
          </div>
-            <xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 0 0">
+         <div id="main">
+<xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 0 0">
                 <defs id="3dDefs">
                     <shader id="redShader" script="urn:xml3d:shader:phong">
                         <float3 name="diffuseColor">1.0 0.0 0.0</float3>
@@ -166,7 +175,7 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
                 <group id='Licht' transform="#t_Lamp">
                  <light shader="#ls_Spot"/> 
                 </group>
-				
+
 				<view id="camera_1" position="0 0 0" orientation="0 0 0 0"/>
 				<view id="camera_2" position="0 0 0" orientation="0 0 0 0"/>
 				<view id="camera_3" position="0 0 0" orientation="0 0 0 0"/>
@@ -174,11 +183,57 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
 				<view id="camera_5" position="0 0 0" orientation="0 0 0 0"/>
             </xml3d>
             <br />
-            <div id="xml3d_scripts"> 
-                
-            </div> 
-        </div>
-        <div id="expand">
+            <div id="xml3d_scripts" />
+
+         </div>
+</div>
+
+<div id="fuss">
+         <!-- SelectMenu -->
+         <div id="navigation">
+                 <ul class="opened" id="root">
+                         <li>
+                                 <img src="media/doc.gif" alt="" />
+                                 <a class="nav" href="/index.php?id=001">Product Catalog</a>
+                         </li>
+
+                         <li id="faunawelt_intern">
+                                 <a class="folder" onclick="toggle('faunawelt_intern',true)">
+                                 <img src="media/opened.gif" alt="" id="img_faunawelt_intern" />Doors</a>
+                         <ul id="ul_faunawelt_intern" class="opened">
+                                 <li>
+                                         <img src="media/doc.gif" alt="" />
+                                         <a class="nav" href="/index.php?id=002">Simple Door</a>
+                                 </li>
+                                 <li>
+                                         <img src="media/doc.gif" alt="" />
+                                         <a class="nav" href="/index.php?id=010">Glass Door</a>
+                                 </li>
+                                 <li>
+                                         <img src="media/doc.gif" alt="" />
+                                         <a class="nav" href="/index.php?id=010">Double Door</a>
+                                 </li>
+                         </ul><!-- Ende: ul_faunawelt_intern -->
+                         </li>
+                 </ul>
+         </div>
+         <!-- ChooseList -->
+         <div id="choose">
+                 <div id="browseHeader">Product Range</div>
+                 <!-- BrowseList -->
+                 <div id="browseList">
+                         <img src="media/previews/simple_door.jpg" alt="Simple Door" height="80px" width="80px" />
+                         <img src="media/sep.gif" alt="" width="30" height="80" />
+                         <img src="media/previews/glass_door.jpg" alt="Simple Door" height="80px" width="80px" />
+                         <img src="media/sep.gif" alt="" width="30" height="80" />
+                         <img src="media/previews/double_door.jpg" alt="Double Door" height="80px" width="80px" />
+                 </div>
+         </div>
+</div>
+
+
+<!-- Debug -->
+<div id="expand">
             <img id="collexp" src="media/exp.png" alt="Collapse / Expand debugging information" />
         </div>
         <div id="debug">
@@ -198,6 +253,6 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
                 <button id='submitButton' >OK</button><!--onclick="X3D.dia.hm('box');"-->
                 <button onclick="X3D.dia.hm('box');">Cancel</button>
             </div>
-        </div> 
-    </body>
+        </div>
+</body>
 </html>

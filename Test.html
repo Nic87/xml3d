@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
+    <head>
+<title>XML3D - Spatial Planner</title>
+<link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
+        <script type="text/javascript" src="lib/menu.js"></script>
+        <script type="text/javascript" src="lib/xml3d.js"></script>
+        <script type="text/javascript" src="lib/modalbox.js"></script>
+        <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.cookie.js"></script>
+                <script type="text/javascript" src="lib/actionQueue.js"></script>
+        <script type="text/javascript" src="lib/xml3dwiki.js"></script>
+        <script type="text/javascript" src="lib/util.js"></script>
+        <script type="text/javascript" src="lib/toolbar.js"></script>
+        <script type="text/javascript" src="lib/em.js"></script>
+        <script type="text/javascript" src="lib/comm.js"></script>
+        <script type="text/javascript" src="lib/genericsHandler.js"></script>
+
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            X3D.log.init($('#output').get(0));
+            X3D.em.init();
+            X3D.tb.init($('#status div'));
+            X3D.ws.init();
+            X3D.main.init();
+            X3D.dia.initmb();
+            X3D.listener.init(); <!-- Funktion aus perspective.js -->
+            X3D.gen.init();
+                        X3D.queue.init();
+            // ugly workaround
+            // $('#MyXml3d').css('height', window.innerHeight-33);
+
+            $('#collexp').click(function(evt) {
+                $('#debug').slideToggle('fast', function() {
+                    $.cookie("debug", $('#debug').is(':visible'));
+
+                    $('#collexp').attr('src', $('#debug').is(':visible')
+                        ? 'media/coll.png' : 'media/exp.png');
+                })
+            });
+
+            // activate last known debug setting
+            if ($.cookie('debug') == "true") {
+                $('#collexp').click();
+            }
+
+            $('#status div').click(function(evt) {
+                X3D.ws.toggle();
+            });
+/*
+$('#MyXml3d').bind('DOMNodeInserted', function(foo) { alert("someone added a node"); console.log(foo); });
+$('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"); });
+*/
+            X3D.log.get("index.html").info("DOM ready");
+        });
+        </script>
+</head>
+
+<body onload="init_nav()">
+<div class="toolbar">
+         <ul id="tools">
+         <li id="logo">XML3D</li>
+         <li><input type="button" title="delete elements" style="background-image: url(media/delete_object.png);" onclick="X3D.main.deleteElement();"/></li>
+         <li><input type="button" title="Create Room" style="background-image: url(media/create_new_dimension.png);" onclick="X3D.tb.createRoomDialog();"/></li>
+         <li><input type="button" title="Change Color" onclick="X3D.tb.changeColorDialog();" style="background-image: url(media/change_color.png);"/></li>
+         <li><input type="button" title="toggle mode" style="background-image: url(media/change_movement_mode.png);" onclick="X3D.main.toggleMode();"/></li>
+         <li><input type="button" title="change texture" style="background-image: url(media/change_texture.png);" onclick="X3D.tb.changeTextureDialog();"/></li>
+         <li><input type="button" title="Insert Generic Element" style="background-image: url(media/create_new_element.png);" onclick="X3D.tb.createBoxDialog()"/></li>
+         <li><input type="button" title="change view" style="background-image: url(media/change_perspective.png);" onclick="X3D.main.createViewDialog()"/></li>
+         <li><input type="button" title="Undo" onclick="X3D.queue.undo()" style="background-image: url(media/icon.png);"/></li>
+         <li><input type="button" title="Redo" onclick="X3D.queue.redo()" style="background-image: url(media/icon.png);"/></li>
+         <li><input type="checkbox" title="show light source" onclick="X3D.main.toggleLights();"/>show light</li>
+         <li>&nbsp;&nbsp;&nbsp;&nbsp;Mode:</li>
+         <li><input id='currentMode' type="text" value="Default"/></li>
+         <li id="status"><div>&nbsp;</div></li>
+         </ul>
+</div>
+
+<div class="mitte">
+         <div id="rechts">
+                 <div id="right">
+                         <div id="rightHeader">Items in Room</div>
+                         <!-- BrowseList -->
+                         <div id="rightContent">
+
+                         <b>Room parts</b><br />
+                         <input type="checkbox" name="zutat" value="salami" />Door1<br />
+                         <input type="checkbox" name="zutat" value="pilze" />Window1<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Window2<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Floor<br />
+
+
+                         <b>Light sources</b><br />
+                         <input type="checkbox" name="zutat" value="sardellen" />light1<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />light2<br />
+
+                         <b>Furniture</b><br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Table1<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Chair1<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Chair2<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Chair3<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Chair4<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />TV<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />Chair1<br />
+                         <input type="checkbox" name="zutat" value="sardellen" />cupboard<br />
+
+                         </div>
+                 </div>
+         </div>
+         <div id="main">
+
+         </div>
+</div>
+
+<div id="fuss">
+         <!-- SelectMenu -->
+         <div id="navigation">
+                 <ul class="opened" id="root">
+                         <li>
+                                 <img src="media/doc.gif" alt="" />
+                                 <a class="nav" href="/index.php?id=001">Product Catalog</a>
+                         </li>
+
+                         <li id="faunawelt_intern">
+                                 <a class="folder" onclick="toggle('faunawelt_intern',true)">
+                                 <img src="media/opened.gif" alt="" id="img_faunawelt_intern" />Doors</a>
+                         <ul id="ul_faunawelt_intern" class="opened">
+                                 <li>
+                                         <img src="media/doc.gif" alt="" />
+                                         <a class="nav" href="/index.php?id=002">Simple Door</a>
+                                 </li>
+                                 <li>
+                                         <img src="media/doc.gif" alt="" />
+                                         <a class="nav" href="/index.php?id=010">Glass Door</a>
+                                 </li>
+                                 <li>
+                                         <img src="media/doc.gif" alt="" />
+                                         <a class="nav" href="/index.php?id=010">Double Door</a>
+                                 </li>
+                         </ul><!-- Ende: ul_faunawelt_intern -->
+                         </li>
+                 </ul>
+         </div>
+         <!-- ChooseList -->
+         <div id="choose">
+                 <div id="browseHeader">Product Range</div>
+                 <!-- BrowseList -->
+                 <div id="browseList">
+                         <img src="media/previews/simple_door.jpg" alt="Simple Door" height="80px" width="80px" />
+                         <img src="media/sep.gif" alt="" width="30" height="80" />
+                         <img src="media/previews/glass_door.jpg" alt="Simple Door" height="80px" width="80px" />
+                         <img src="media/sep.gif" alt="" width="30" height="80" />
+                         <img src="media/previews/double_door.jpg" alt="Double Door" height="80px" width="80px" />
+                 </div>
+         </div>
+</div>
+
+<!-- Debug -->
+<div id="expand">
+            <img id="collexp" src="media/exp.png" alt="Collapse / Expand debugging information" />
+        </div>
+        <div id="debug">
+            <div class="toolbar" id="debugheader">
+                <h3 style="display: inline;">Debugging Output</h3>
+                <div style="float: right; padding-right: 5px;">
+                    <button onclick="javascript: $('#output').val($('#output').val()+(new Array(125).join('-'))+'\n')">insert marker</button> |
+                    <button onclick="javascript: $('#output').val('')">clear</button>
+                </div>
+            </div>
+            <textarea id="output" readonly="readonly"></textarea>
+        </div>
+        <div id="box" class="dialog" style="display: none;">
+            <div style="text-align:center">
+                <ol id="items"></ol>
+                <div id="dialogContent"></div>
+                <button id='submitButton' >OK</button><!--onclick="X3D.dia.hm('box');"-->
+                <button onclick="X3D.dia.hm('box');">Cancel</button>
+            </div>
+        </div>
+</body>
+</html>
