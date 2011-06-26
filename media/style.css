@@ -54,6 +54,18 @@ min-width: 30px;
 background-color: #fff;
 }
 
+.toolbar ul#tools li input[type="text"] {
+background-repeat: no-repeat;
+background-position: center;
+border: 1px solid #ccc;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+-khtml-border-radius: 2px;
+border-radius: 2px;
+cursor:pointer;
+min-width: 30px;
+background-color: #fff;
+}
 .toolbar ul#tools li input[type="button"]:active {
 border-color: #aaa;
 background-color: #fefefe;
