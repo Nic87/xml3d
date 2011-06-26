@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl" xmlns:physics="http://www.xml3d.org/2009/physics">
     <head>
         <link rel="stylesheet" type="text/css" media="screen" href="media/style.css" />
+	<script type="text/javascript" src="lib/menu.js"></script>
         <script type="text/javascript" src="lib/xml3d.js"></script>
         <script type="text/javascript" src="lib/modalbox.js"></script>
         <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
@@ -57,7 +58,7 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
         </script>
     </head>
 
-<body>
+<body onload="init_nav()">
 <div class="toolbar">
          <ul id="tools">
          <li id="logo">XML3D</li>
@@ -109,7 +110,7 @@ $('#MyXml3d').bind('DOMNodeRemoved', function() { alert("someone deleted a node"
                  </div>
          </div>
          <div id="main">
-<xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 600px;" activeView="#defaultView" physics:gravity="0 0 0">
+<xml3d xmlns="http://www.xml3d.org/2009/xml3d" id="MyXml3d" style="width: 100%; height: 100%;" activeView="#defaultView" physics:gravity="0 0 0">
                 <defs id="3dDefs">
                     <shader id="redShader" script="urn:xml3d:shader:phong">
                         <float3 name="diffuseColor">1.0 0.0 0.0</float3>
